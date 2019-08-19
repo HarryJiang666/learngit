@@ -1,0 +1,15 @@
+--新建用户
+git config --global user.name "yourName"
+git config --global user.email "yourName@gmail.com"
+--新建仓库
+mkdir yourRepository  //创建新文件夹
+cd d：//进入d盘
+cd yourRepository/  //进入文件夹
+git init  //把刚才创建的文件夹变为仓库（一台电脑可以有多个仓库，重复以上步骤即可）
+pwd  //显示当前目录
+--添加文件
+git add your document  //添加文件
+git commit -m"your remark"  //添加注释并提交
+
+git status  //查看仓库当前的状态
+git diff  //查看修改结果
