@@ -7,9 +7,9 @@ cd d：//进入d盘
 cd yourRepository/  //进入文件夹
 git init  //把刚才创建的文件夹变为仓库（一台电脑可以有多个仓库，重复以上步骤即可）
 pwd  //显示当前目录
-cat yourDocument  //查看文件
+cat yourFile  //查看文件
 --添加文件
-git add yourDocument  //添加文件
+git add yourFile  //添加文件
 git commit -m"your remark"  //添加注释并提交
 
 git status  //查看仓库当前的状态
@@ -19,3 +19,9 @@ git log  //查看提交历史，以便确定要回退到哪个版本
 git reflog  //查看命令历史，以便确定要回到未来的哪个版本
 git reset --hard HEAD^  //返回上一个版本
 git reset --hard ID  //返回某个版本号
+--修改
+git checkout -- yourFile  //撤销工作区或暂存区（已添加到暂存区后）的修改
+git reset HEAD yourFile  //撤销暂存区的修改，回到工作区
+rm yourFile  //从本地删除文件
+git rm yourFile  //从版本库中删除文件
+git checkout -- yourFile  //从版本库中恢复文件
