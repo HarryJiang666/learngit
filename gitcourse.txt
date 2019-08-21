@@ -27,13 +27,39 @@ git rm yourFile  //从版本库中删除文件
 git checkout -- yourFile  //从版本库中恢复文件
 --创建SSH Key
 ssh-keygen -t rsa -C "youremail@example.com"
---关联git hub
+--关联github
 git remote add origin git@server-name:path/repo-name.git  //关联一个远程库
 git push -u origin master  //第一次推送master分支的所有内容
+git push -f origin master  //强制推送master分支的所有内容
 git push origin master  //推送最新修改
 git clone git@server-name:path/repo-name.git  //下载远程库到本地
+git remote -v  //查看远程库信息
 --分支
 git branch dev  //创建dev分支
 git checkout dev  //切换到dev分支
 git checkout -b dev   //创建并切换到dev分支
 git branch  //命令查看当前分支
+git merge dev  //合并dev分支到master
+git branch -d dev  //删除dev分支
+git branch -D dev  //强制删除（未保存）dev分支
+git stash  //保存工作现场
+git stash pop  //返回工作现场
+git cherry-pick XXX  //提交所做的修改
+--多人协作
+在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+可以试图用git push origin <branch-name>推送自己的修改；
+如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+如果合并有冲突，则解决冲突，并在本地提交；
+没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+--标签
+git tag -a<name> -m"text"  //给当前分支创建名为name，注释为text的标签，无注释时可用git tag <name>
+git tag  //查看所有标签
+git tag v0.9 f52c633  //给commit id 是f52c633的打上v0.9标签
+git show <tagname>   //查看某标签信息
+git push origin <tagname>  //推送某个标签
+git push origin --tags  //推送所有标签
+git tag -d v0.1  //删除本地标签v0.1
+git push origin :refs/tags/<tagname>  //删除一个远程标签
+
